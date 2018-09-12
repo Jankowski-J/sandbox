@@ -30,13 +30,36 @@ ms.author: brpeek
 
 ## Compatibility
 
-This plugin contains builds of the Azure Storage SDK for Win32 and Win64.  Other platforms will not work.
+This plugin contains builds of the Azure Storage SDK for Win32 and Win64.  Other platforms will not work. 
 
-## Known Issues and Limitations
+## Information
+
+The plugin contains the Azure Storage SDK for C++ compiled as static libs along with required dependencies.  These libs will be linked against the game you're building your project.  There is no specific API or procedure for use with Unreal.  For more information, please see the standard Azure Storage docs on how to use the SDK and service.
+
+* Table
+* Blob
+* File
+* Queue
 
 ## Add the Plugin
 
+To add the Azure Storage SDK to your project, do the following:
+
+1. download
+1. add module
+1. write code
+
 ## Try the Sample
+
+We created a sample using the Unreal puzzle game template which updates Table Storage for every box clicked.  To learn more, see the sample.
+
+## How It's Made
+
+If you want to compile this for yourself and create your own plugin, here's how we created this:
+
+1. vcpkg
+1. stuff
+1. more stuff
 
 ## Cosmos DB Table API
 
@@ -44,4 +67,4 @@ This plugin contains builds of the Azure Storage SDK for Win32 and Win64.  Other
 
 ## Next Steps
 
-* [Azure Storage Docs](https://aka.ms/azstoragedocsgamedev)
+* [Azure Storage Docs](https://aka.ms/TODO)
