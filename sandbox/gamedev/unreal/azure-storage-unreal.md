@@ -30,11 +30,11 @@ ms.author: brpeek
 
 ## Compatibility
 
-This plugin contains builds of the Azure Storage SDK for Win32 and Win64.  Other platforms will not work. 
+This plugin contains builds of the Azure Storage SDK for Win32 and Win64.  Other platforms will not work.
 
 ## Information
 
-The plugin contains the Azure Storage SDK for C++ compiled as static libs along with required dependencies.  These libs will be linked against the game you're building your project.  There is no specific API or procedure for use with Unreal.  For more information, please see the standard Azure Storage docs on how to use the SDK and service.
+The plugin contains the [Azure Storage SDK for C++](TODO) compiled as static libs along with required dependencies.  These libs will be linked against the game when building the project.  There is no specific Unreal API, so you can use the Storage SDK as you would from any other application.  For more information, please see the [Azure Storage docs](TODO).
 
 * Table
 * Blob
@@ -45,22 +45,28 @@ The plugin contains the Azure Storage SDK for C++ compiled as static libs along 
 
 To add the Azure Storage SDK to your project, do the following:
 
-1. download
-1. add module
-1. write code
+1. Download the Plugin package.
+1. Place the AzureStorage directory from the download in the Plugins directory in your project.
+1. Add the `AzureStorage` module to your game's module list.
+1. If you are using a non-default Visual C++ compiler, please modify the AzureStorage.Build.cs build script.
 
 ## Try the Sample
 
-We created a sample using the Unreal puzzle game template which updates Table Storage for every box clicked.  To learn more, see the sample.
+We created a sample using the Unreal puzzle game template which updates Table Storage for every box clicked.  To learn more, see the [sample]().
 
 ## How It's Made
 
 If you want to compile this for yourself and create your own plugin, here's how we created this:
 
-1. vcpkg
-1. stuff
-1. more stuff
-
+1. Clone the [Vcpkg project](https://github.com/Microsoft/vcpkg).
+1. When complete, run the `bootstrap-vcpkg.bat` script located in the root directory.
+1. Edit the triplets\x64-windows.cmake and triplets\x86-windows.cmake files to change the last line from `set(VCPKG_LIBRARY_LINKAGE dynamic)` to `set(VCPKG_LIBRARY_LINKAGE static)`.
+1. Run vcpkg to build the library: `vcpkg install azure-storage-cpp:x64-windows`.
+1. Copy the following files to the Plugins directory:
+   * packages\azure-storage-cpp_x64-windows\lib\wastorage.lib
+   * packages\cpprestsdk_x64-windows\lib\cpprest_2_10.lib
+   * packages\zlib_x64-windows\lib\zlib.lib
+ 
 ## Cosmos DB Table API
 
 [Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction) is Microsoft's globally distributed, multi-model database. One of the data models available for Cosmos DB is [Table API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction). Applications written for Azure Table storage can migrate to Azure Cosmos DB by using the Table API with no code changes and take advantage of premium capabilities. If you have a Cosmos DB database, you can use the Table Storage client SDK we provide to access it from your Unreal Engine game. Check the instructions [here](https://docs.microsoft.com/en-us/azure/cosmos-db/create-table-dotnet#update-your-connection-string) on how to find out your connection string.
