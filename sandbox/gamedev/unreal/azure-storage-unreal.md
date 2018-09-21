@@ -80,11 +80,13 @@ If you want to compile this for yourself and create your own plugin, here's how 
    * packages\openssl-windows_x86-windows\lib\libeay32.lib
    * packages\openssl-windows_x86-windows\lib\ssleay32.lib
    * packages\boost-system_x86-windowss\lib\boost_system-vc140-mt.lib
-1. Copy the following directories to the plugin's Source\Public directory:
+1. Copy the following include directories to the plugin's Source\Public directory:
    * packages\azure-storage-cpp_x64-windows\include\was
    * packages\azure-storage-cpp_x64-windows\include\wascore
    * packages\cpprestsdk_x64-windows\include\cpprest
    * packages\cpprestsdk_x64-windows\include\pplx
+
+The project's existing *AzureStorage.uplugin* and *AzureStorage.Build.cs* contain the necessary definitions to use the plugin with any project.
 
 ## Cosmos DB Table API
 
