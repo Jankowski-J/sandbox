@@ -7,10 +7,6 @@ keywords: unreal, azure, storage
 ms.topic: article
 ms.date: 9/12/2018
 ms.author: brpeek
-#ms.devlang: 
-#ms.prod:
-#ms.technology:
-#ms.service:
 ---
 # Azure Storage SDK for Unreal Engine
 
@@ -60,13 +56,23 @@ If you want to compile this for yourself and create your own plugin, here's how 
 
 1. Clone the [Vcpkg project](https://github.com/Microsoft/vcpkg).
 1. When complete, run the `bootstrap-vcpkg.bat` script located in the root directory.
-1. Edit the triplets\x64-windows.cmake and triplets\x86-windows.cmake files to change the last line from `set(VCPKG_LIBRARY_LINKAGE dynamic)` to `set(VCPKG_LIBRARY_LINKAGE static)`.
-1. Run vcpkg to build the library: `vcpkg install azure-storage-cpp:x64-windows`.
-1. Copy the following files to the Plugins directory:
+1. Edit the *triplets\x64-windows.cmake* and *triplets\x86-windows.cmake* files to change the last line from `set(VCPKG_LIBRARY_LINKAGE dynamic)` to `set(VCPKG_LIBRARY_LINKAGE static)`.
+1. Run vcpkg to build the libraries: `vcpkg install azure-storage-cpp:x64-windows` and `vcpkg install azure-storage-cpp:x86-windows`.
+1. Copy the following files to the plugin's Binaries\ThirdParty\Win64 directory:
    * packages\azure-storage-cpp_x64-windows\lib\wastorage.lib
    * packages\cpprestsdk_x64-windows\lib\cpprest_2_10.lib
    * packages\zlib_x64-windows\lib\zlib.lib
- 
+   * packages\openssl-windows_x64-windows\lib\libeay32.lib
+   * packages\openssl-windows_x64-windows\lib\ssleay32.lib
+   * packages\boost-system_x64-windowss\lib\boost_system-vc140-mt.lib
+1. Copy the following files to the plugin's Binaries\ThirdParty\Win32 directory:
+   * packages\azure-storage-cpp_x86-windows\lib\wastorage.lib
+   * packages\cpprestsdk_x86-windows\lib\cpprest_2_10.lib
+   * packages\zlib_x86-windows\lib\zlib.lib
+   * packages\openssl-windows_x86-windows\lib\libeay32.lib
+   * packages\openssl-windows_x86-windows\lib\ssleay32.lib
+   * packages\boost-system_x86-windowss\lib\boost_system-vc140-mt.lib
+
 ## Cosmos DB Table API
 
 [Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction) is Microsoft's globally distributed, multi-model database. One of the data models available for Cosmos DB is [Table API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction). Applications written for Azure Table storage can migrate to Azure Cosmos DB by using the Table API with no code changes and take advantage of premium capabilities. If you have a Cosmos DB database, you can use the Table Storage client SDK we provide to access it from your Unreal Engine game. Check the instructions [here](https://docs.microsoft.com/en-us/azure/cosmos-db/create-table-dotnet#update-your-connection-string) on how to find out your connection string.
