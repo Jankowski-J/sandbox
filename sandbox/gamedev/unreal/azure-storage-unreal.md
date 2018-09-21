@@ -32,19 +32,27 @@ This plugin contains builds of the Azure Storage SDK for Win32 and Win64.  Other
 
 The plugin contains the [Azure Storage SDK for C++](TODO) compiled as static libs along with required dependencies.  These libs will be linked against the game when building the project.  There is no specific Unreal API, so you can use the Storage SDK as you would from any other application.  For more information, please see the [Azure Storage docs](TODO).
 
-* Table
-* Blob
-* File
-* Queue
+* [Table](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-c-plus)
+* [Blob](https://docs.microsoft.com/azure/storage/blobs/storage-c-plus-plus-how-to-use-blobs)
+* [File](https://docs.microsoft.com/azure/storage/files/storage-c-plus-plus-how-to-use-files)
+* [Queue](https://docs.microsoft.com/azure/storage/queues/storage-c-plus-plus-how-to-use-queues)
 
 ## Add the Plugin
 
-To add the Azure Storage SDK to your project, do the following:
+To add the Azure Storage SDK to your Unreal project, do the following:
 
-1. Download the Plugin package.
-1. Place the AzureStorage directory from the download in the Plugins directory in your project.
-1. Add the `AzureStorage` module to your game's module list.
-1. If you are using a non-default Visual C++ compiler, please modify the AzureStorage.Build.cs build script.
+1. Download the Plugin package and unzip.
+1. Copy the AzureStorage directory from the archive to the Plugins directory in your project.
+1. Add the `AzureStorage` module to your game's `PrivateDependencyModuleNames` list by editing the *\*.Build.cs* file for your project:
+
+   ```csharp
+   PrivateDependencyModuleNames.AddRange(new string[] { "AzureStorage" });
+   ```
+
+> [!NOTE]
+> If you are using a non-default Visual C++ compiler, please modify the *AzureStorage.Build.cs* build script.
+
+With the above in place, you should now be able to follow the generic C++ instructions listed above to connect to and use the Azure Storage service.
 
 ## Try the Sample
 
@@ -72,6 +80,11 @@ If you want to compile this for yourself and create your own plugin, here's how 
    * packages\openssl-windows_x86-windows\lib\libeay32.lib
    * packages\openssl-windows_x86-windows\lib\ssleay32.lib
    * packages\boost-system_x86-windowss\lib\boost_system-vc140-mt.lib
+1. Copy the following directories to the plugin's Source\Public directory:
+   * packages\azure-storage-cpp_x64-windows\include\was
+   * packages\azure-storage-cpp_x64-windows\include\wascore
+   * packages\cpprestsdk_x64-windows\include\cpprest
+   * packages\cpprestsdk_x64-windows\include\pplx
 
 ## Cosmos DB Table API
 
