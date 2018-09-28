@@ -15,8 +15,8 @@ ms.author: brpeek
 > [!IMPORTANT]
 > This is an experimental Unreal Engine SDK for Azure Storage.  As such, please note that this SDK is not supported and is not provided by the Azure Storage team.  If you run into problems, please let us know using the [GitHub Issues](https://github.com/BrianPeek/TODO) page for this fork.
 
-[![Get the source](../../media/buttons/source2.png)](https://github.com/BrianPeek/TODO)
-[![Try it now](../../media/buttons/try2.png)](https://aka.ms/azstorage-unitysdkTODO)
+[![Get the source](../../media/buttons/source2.png)](https://github.com/BrianPeek/AzureSDKs-Unreal)
+[![Try it now](../../media/buttons/try2.png)](https://github.com/BrianPeek/TODO)
 
 ## Requirements
 
@@ -30,7 +30,7 @@ This plugin contains builds of the Azure Storage SDK for Win32 and Win64.  Other
 
 ## Information
 
-The plugin contains the [Azure Storage SDK for C++](TODO) compiled as static libs along with required dependencies.  These libs will be linked against the game when building the project.  There is no specific Unreal API, so you can use the Storage SDK as you would from any other application.  For more information, please see the [Azure Storage docs](TODO).
+The plugin contains the [Azure Storage SDK for C++](https://github.com/Azure/azure-storage-cpp) compiled as static libs along with required dependencies.  These libs will be linked against the game when building the project.  There is no specific Unreal API, so you can use the Storage SDK as you would from any other application.  For more information, please see the following docs:
 
 * [Table](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-c-plus)
 * [Blob](https://docs.microsoft.com/azure/storage/blobs/storage-c-plus-plus-how-to-use-blobs)
@@ -42,8 +42,14 @@ The plugin contains the [Azure Storage SDK for C++](TODO) compiled as static lib
 To add the Azure Storage SDK to your Unreal project, do the following:
 
 1. Download the Plugin package and unzip.
-1. Copy the AzureStorage directory from the archive to the Plugins directory in your project.
-1. Add the `AzureStorage` module to your game's `PrivateDependencyModuleNames` list by editing the *\*.Build.cs* file for your project:
+1. Copy the extracted *AzureStorage* directory to the *Plugins* directory in your project.
+1. Add the following line to your game's *Target.cs* file:
+
+   ```csharp
+   bForceEnableException = true;
+   ```
+
+1. Add the `AzureStorage` module to your game's `PrivateDependencyModuleNames` list by editing the *.Build.cs* file for your project:
 
    ```csharp
    PrivateDependencyModuleNames.AddRange(new string[] { "AzureStorage" });
@@ -56,7 +62,13 @@ With the above in place, you should now be able to follow the generic C++ instru
 
 ## Try the Sample
 
-We created a sample using the Unreal puzzle game template which updates Table Storage for every box clicked.  To learn more, see the [sample]().
+We created a sample using the Unreal puzzle game template which updates Table Storage for every box clicked.  To try out the sample, do the following:
+
+1. Clone the GitHub repo.
+1. Download the latest Storage plugin release.
+1. Copy the plugin to the StorageDemo project as described above.
+1. Open the Source\StorageDemo\StorageDemoGameGrid.cpp file and add your Azure Storage connection string to the `AddScore` method where noted.
+1. Run the game via the Editor or build and package.
 
 ## How It's Made
 
