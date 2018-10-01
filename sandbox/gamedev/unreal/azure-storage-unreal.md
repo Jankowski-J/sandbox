@@ -5,7 +5,7 @@ author: BrianPeek
 manager: timheuer
 keywords: unreal, azure, storage
 ms.topic: article
-ms.date: 9/12/2018
+ms.date: 10/1/2018
 ms.author: brpeek
 ---
 # Azure Storage SDK for Unreal Engine
@@ -13,10 +13,10 @@ ms.author: brpeek
 [!include[](../../includes/header.md)]
 
 > [!IMPORTANT]
-> This is an experimental Unreal Engine SDK for Azure Storage.  As such, please note that this SDK is not supported and is not provided by the Azure Storage team.  If you run into problems, please let us know using the [GitHub Issues](https://github.com/BrianPeek/TODO) page for this fork.
+> This is an experimental Azure Storage SDK for Unreal Engine.  As such, please note that this SDK is not supported and is not provided by the Azure Storage team.  If you run into problems, please let us know using the [GitHub Issues](https://github.com/BrianPeek/AzureSDKs-Unreal/issues) page for this SDK.
 
 [![Get the source](../../media/buttons/source2.png)](https://github.com/BrianPeek/AzureSDKs-Unreal)
-[![Try it now](../../media/buttons/try2.png)](https://github.com/BrianPeek/TODO)
+[![Try it now](../../media/buttons/try2.png)](https://github.com/BrianPeek/AzureSDKs-Unreal/releases)
 
 ## Requirements
 
@@ -58,6 +58,16 @@ To add the Azure Storage SDK to your Unreal project, do the following:
 > [!NOTE]
 > If you are using a non-default Visual C++ compiler, please modify the *AzureStorage.Build.cs* build script.
 
+1. When headers are `#include`'ed from the SDK, please wrap in the following `#pragma` statements to allow the compiler to ignore warnings around exception handling:
+
+   ```c++
+   #pragma warning(push)
+   #pragma warning(disable:4577)
+   #pragma warning(disable:4530)
+   // #include Storage SDK Headers here...
+   #pragma warning(pop)
+   ```
+
 With the above in place, you should now be able to follow the generic C++ instructions listed above to connect to and use the Azure Storage service.
 
 ## Try the Sample
@@ -72,7 +82,7 @@ We created a sample using the Unreal puzzle game template which updates Table St
 
 ## How It's Made
 
-If you want to compile this for yourself and create your own plugin, here's how we created this:
+If you want to compile this for yourself and create your own plugin, here's how we created this.  Note that the *storage.bat* build script in the *_build* directory performs these steps:
 
 1. Clone the [Vcpkg project](https://github.com/Microsoft/vcpkg).
 1. When complete, run the `bootstrap-vcpkg.bat` script located in the root directory.
