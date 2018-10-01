@@ -43,20 +43,14 @@ To add the Azure Storage SDK to your Unreal project, do the following:
 
 1. Download the Plugin package and unzip.
 1. Copy the extracted *AzureStorage* directory to the *Plugins* directory in your project.
-1. Add the following line to your game's *Target.cs* file:
-
-   ```csharp
-   bForceEnableException = true;
-   ```
-
-1. Add the `AzureStorage` module to your game's `PrivateDependencyModuleNames` list by editing the *.Build.cs* file for your project:
+1. Add the `AzureStorage` module to your game's `PrivateDependencyModuleNames` list by editing the *.Build.cs* file for your game:
 
    ```csharp
    PrivateDependencyModuleNames.AddRange(new string[] { "AzureStorage" });
    ```
 
-> [!NOTE]
-> If you are using a non-default Visual C++ compiler, please modify the *AzureStorage.Build.cs* build script.
+  > [!NOTE]
+  > If you are using a non-default Visual C++ compiler, please modify the *AzureStorage.Build.cs* build script to update the path to the compiler.
 
 1. When headers are `#include`'ed from the SDK, please wrap in the following `#pragma` statements to allow the compiler to ignore warnings around exception handling:
 
@@ -116,4 +110,7 @@ The project's existing *AzureStorage.uplugin* and *AzureStorage.Build.cs* contai
 
 ## Next Steps
 
-* [Azure Storage Docs](https://aka.ms/TODO)
+* [C++ Table Storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-c-plus)
+* [C++ Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-c-plus-plus-how-to-use-blobs)
+* [C++ File Storage](https://docs.microsoft.com/azure/storage/files/storage-c-plus-plus-how-to-use-files)
+* [C++ Queue Storage](https://docs.microsoft.com/azure/storage/queues/storage-c-plus-plus-how-to-use-queues)
