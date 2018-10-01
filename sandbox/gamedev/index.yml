@@ -43,16 +43,16 @@ sections:
       href: unity/azure-mobile-apps-unity
       image:
         src: media/unity.png
-    - title: Azure Mobile Apps SDK for Unreal Engine
-      html: <p>Use Azure Storage from your Unreal project</p>
-      href: unity/azure-mobile-apps-unreal
-      image:
-        src: media/unity.png
     - title: Azure SDKs for MonoGame
       html: <p>Use the Azure SDKs with MonoGame</p>
       href: monogame/azure-monogame
       image:
         src: media/monogame.png
+    - title: Azure Mobile Apps SDK for Unreal Engine
+      html: <p>Use Azure Storage from your Unreal project</p>
+      href: unity/azure-mobile-apps-unreal
+      image:
+        src: media/unreal.png
 - title: Azure Gaming Samples
   items:
   - type: paragraph

@@ -56,7 +56,7 @@ sections:
   - type: list
     style: cards
     className: cardsM
-    columns: 3
+    columns: 2
     items:
     - title: Azure SDKs and Samples for Unity
       html: <p>Use Azure services from your Unity project</p>
@@ -72,7 +72,7 @@ sections:
       html: <p>Use Azure SDKs with Unreal Engine</p>
       href: gamedev/
       image:
-        src: gamedev/media/monogame.png
+        src: gamedev/media/unreal.png
 - title: Guidance
   items:
   - type: paragraph
