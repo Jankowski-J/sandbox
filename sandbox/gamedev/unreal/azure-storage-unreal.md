@@ -54,7 +54,7 @@ To add the Azure Storage SDK to your Unreal project, do the following:
   > [!NOTE]
   > If you are using a non-default Visual C++ compiler, please modify the *AzureStorage.Build.cs* build script to update the path to the compiler.
 
-1. Add the following line to your game's *Target.cs* file:
+1. If you are using Unreal 4.18 **only**, add the following line to your game's *Target.cs* file:
 
    ```csharp
    bForceEnableExceptions = true;
