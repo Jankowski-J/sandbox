@@ -82,7 +82,7 @@ We created a sample using the Unreal puzzle game template which updates Table St
 1. Clone the GitHub repo.
 1. Download the latest Storage plugin release.
 1. Copy the plugin to the StorageDemo project as described above.
-1. Open the Source\StorageDemo\StorageDemoGameGrid.cpp file and add your Azure Storage connection string to the `AddScore` method where noted.
+1. Open the *Source\StorageDemo\StorageDemoGameGrid.cpp* file and add your Azure Storage connection string to the `AddScore` method where noted.
 1. Run the game via the Editor or build and package.
 
 ## How It's Made
