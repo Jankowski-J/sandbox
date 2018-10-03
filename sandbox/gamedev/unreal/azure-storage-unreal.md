@@ -43,6 +43,8 @@ To add the Azure Storage SDK to your Unreal project, do the following:
 
 1. Download the Plugin package and unzip.
 1. Copy the extracted *AzureStorage* directory to the *Plugins* directory in your project.
+1. Right-click on your game's *.uproject* file in Explorer and select **Generate Visual Studio project files...** from the menu.
+1. Open your game's *.sln* solution file in Visual Studio.
 1. Add the `AzureStorage` module to your game's `PrivateDependencyModuleNames` list by editing the *.Build.cs* file for your game:
 
    ```csharp
@@ -52,17 +54,26 @@ To add the Azure Storage SDK to your Unreal project, do the following:
   > [!NOTE]
   > If you are using a non-default Visual C++ compiler, please modify the *AzureStorage.Build.cs* build script to update the path to the compiler.
 
+1. Add the following line to your game's *Target.cs* file:
+
+   ```csharp
+   bForceEnableExceptions = true;
+   ```
+
+1. Rebuild the solution in Visual Studio.
 1. When headers are `#include`'ed from the SDK, please wrap in the following `#pragma` statements to allow the compiler to ignore warnings around exception handling:
 
-   ```c++
+   ```C++
    #pragma warning(push)
-   #pragma warning(disable:4577)
-   #pragma warning(disable:4530)
+   #pragma warning(disable:4577 4530)
    // #include Storage SDK Headers here...
    #pragma warning(pop)
    ```
 
-With the above in place, you should now be able to follow the generic C++ instructions listed above to connect to and use the Azure Storage service.
+  > [!NOTE]
+  > Unreal Engine disables exception handling by default, however the Storage SDK uses exceptions to report errors.  This may cause unexpected behavior in your game if the Storage SDK throws an exception.  You can download the [Unreal Engine source code](https://www.unrealengine.com/en-US/ue4-on-github) and build the engine yourself with exceptions enabled if this is an important scenario for your game.
+
+With the above in place, you should now be able to build the project.  To use the API, follow the generic C++ instructions listed above to connect to and use the Azure Storage service.
 
 ## Try the Sample
 
